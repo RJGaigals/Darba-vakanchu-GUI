@@ -16,6 +16,7 @@ should_reset_scrollbar = False
 wage_sorting_descending = None
 double_click_start_x = 0
 double_click_start_y = 0
+filter_keywords = []
 
 
 
@@ -56,11 +57,13 @@ def restore_original(jobs):
 
 def filter_by_keywords(posts: list, keywords: str):
     print(keywords)
-    keyword_list = keywords.split()
+    global filter_keywords
+
+    filter_keywords = keywords.split()
     posts_copy = posts.copy()  # this is needed because otherwise removing is very FUCKY
     for job in posts_copy:
         x = job.autors.upper() + job.amats.upper()
-        for keyword in keyword_list:
+        for keyword in filter_keywords:
             y = keyword.upper()
             if y not in x:
                 posts.remove(job)
@@ -91,6 +94,7 @@ def frame_commands(jobs=None, author_list=None):
     global was_double_clicked
     global wage_sorting_descending
     global should_reset_scrollbar
+    global filter_keywords
 
     #index = int(double_click_start_y + imgui.get_scroll_y() - 102) // 42
 
@@ -228,6 +232,14 @@ def frame_commands(jobs=None, author_list=None):
 
             imgui.end_menu()
 
+        if len(filter_keywords) > 0:
+            keyword_str = ", ".join(filter_keywords)
+            imgui.same_line(spacing=100)
+            imgui.text_colored(f"Filtering by: {keyword_str}", 1, 0, 0)
+            imgui.same_line(spacing=300)
+        else:
+            imgui.same_line(spacing=800)
+
         # helpers that display info on the top main menu bar
         # imgui.same_line(spacing=20)
         # imgui.text(f"cursor pos = {imgui.get_mouse_pos()}")
@@ -236,7 +248,6 @@ def frame_commands(jobs=None, author_list=None):
         # imgui.same_line(spacing=10)
         # imgui.text(f"index = {index}")
 
-        imgui.same_line(spacing=800)
         imgui.text("Search for:")
         imgui.same_line(spacing=20)
         text_val = "keywords"
@@ -249,6 +260,7 @@ def frame_commands(jobs=None, author_list=None):
         if changed:
             if text_val == "keywords" or text_val == "":
                 restore_original(jobs)
+                filter_keywords.clear()
                 wage_sorting_descending = None
                 should_reset_scrollbar = True
             else:
