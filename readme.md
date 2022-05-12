@@ -1,0 +1,2 @@
+Darbs tika izveidots, lai varētu viegli un ātri apskatīt, kas notiek darba tirgū. Galvenais iemesls darba izveidei bija tas, ka darba sludinājumu lapās nav iespēja kārtot pēc sludinājumā piedāvātās algas. Man kā studentam vairāk droši vien interesētu sludinājumi ar zemākām piedāvātajām algām.
+Īss video, kurā tiek demonstrēta programmas darbība: https://www.youtube.com/watch?v=I6KEuQK-_e0

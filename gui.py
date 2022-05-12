@@ -171,27 +171,6 @@ def frame_commands(jobs=None, author_list=None):
             sort_by_criteria(posts=jobs, criteria="min_alga", descending=wage_sorting_descending)
             should_reset_scrollbar = True
 
-    # if was_double_clicked:
-    #     #link = jobs[index].link
-    #     print("klikd")
-    #     imgui.open_popup("popups")
-    #     imgui.set_next_window_size(800, 100)
-    #     if imgui.begin_popup("popups"):
-    #         window_x = imgui.get_window_position()[0]
-    #         window_y = imgui.get_window_position()[1]
-    #         window_width = imgui.get_window_width()
-    #         window_height = imgui.get_window_height()
-    #         if imgui.is_mouse_clicked() and not imgui.is_mouse_double_clicked():
-    #             if imgui.get_mouse_pos()[0] < window_x or imgui.get_mouse_pos()[0] > window_x + window_width:
-    #                 was_double_clicked = False
-    #             elif imgui.get_mouse_pos()[1] < window_y or imgui.get_mouse_pos()[1] > window_y + window_height:
-    #                 was_double_clicked = False
-    #             else:
-    #                 webbrowser.get(chrome_path).open(link)
-    #
-    #         imgui.text(f"window x = {window_x}, window y = {window_y} \n {link}")
-    #         imgui.end_popup()
-
     imgui.end()
 
     if imgui.begin_main_menu_bar():
